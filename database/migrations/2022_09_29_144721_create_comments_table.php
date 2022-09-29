@@ -22,6 +22,7 @@ class CreateCommentsTable extends Migration
             $table->integer('number')->nullable();
             $table->string('path')->comment('001.001.003.008');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
