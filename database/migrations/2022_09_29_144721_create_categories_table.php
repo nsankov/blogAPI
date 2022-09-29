@@ -17,8 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->unique('categories_title_uindex');
             $table->string('description')->nullable();
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

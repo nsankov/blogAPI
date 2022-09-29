@@ -18,8 +18,7 @@ class CreatePostVotesTable extends Migration
             $table->unsignedBigInteger('user_id')->index('post_votes_users_id_fk');
             $table->unsignedBigInteger('post_id')->index('post_votes_posts_id_fk');
             $table->tinyInteger('value');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

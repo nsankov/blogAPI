@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->integer('number')->nullable();
             $table->string('path')->comment('001.001.003.008');
+            $table->timestamps();
         });
     }
 

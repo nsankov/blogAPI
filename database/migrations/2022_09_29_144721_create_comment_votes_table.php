@@ -18,8 +18,7 @@ class CreateCommentVotesTable extends Migration
             $table->unsignedBigInteger('user_id')->index('comment_votes_user_id_fk');
             $table->unsignedBigInteger('comment_id')->index('comment_votes_comment_id_fk');
             $table->tinyInteger('value');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at')->nullable();
+            $table->timestamps();
         });
     }
 

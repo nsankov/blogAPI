@@ -19,10 +19,9 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('category_id')->index('posts_categories_id_fk');
             $table->string('title');
             $table->text('body');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at')->nullable();
+            $table->timestamps();
             $table->dateTime('published_at')->nullable();
-            $table->dateTime('deleted_at')->nullable();
+            $table->softDeletes();
         });
     }
 
