@@ -14,6 +14,7 @@ class AddForeignKeysToCommentsTable extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
+            $table->foreign(['parent_id'], 'comments_comments_id_fk')->references(['id'])->on('comments')->onUpdate('NO ACTION')->onDelete('NO ACTION');
             $table->foreign(['post_id'], 'comments_posts_id_fk')->references(['id'])->on('posts')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
@@ -26,6 +27,7 @@ class AddForeignKeysToCommentsTable extends Migration
     public function down()
     {
         Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign('comments_comments_id_fk');
             $table->dropForeign('comments_posts_id_fk');
         });
     }
