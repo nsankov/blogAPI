@@ -1,4 +1,4 @@
-<p align="center"><a href="http://localhost" target="_blank"><img src="https://github.com/nsankov/laravel-blog-RESTful/blob/main/_documentation/logo.png?raw=true" width="400" alt="BlogAPI Logo"></a></p>
+<p align="center"><a href="http://localhost" target="_blank"><img src="https://github.com/nsankov/laravel-blog-RESTful/blob/main/_documentation/logo.png?raw=true" width="150" alt="BlogAPI Logo"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
