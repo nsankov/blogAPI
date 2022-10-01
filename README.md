@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/nsankov/laravel-blog-RESTful/blob/main/_documentation/logo.png?raw=true" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -28,7 +28,7 @@ post api/v1/coments (with ThrottleRequestsTest )
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ### Database structure
-![alt text](https://github.com/nsankov/laravel-blog-RESTful/blob/main/db_diagram.png?raw=true)
+![alt text](https://github.com/nsankov/laravel-blog-RESTful/blob/main/_documentation/db_diagram.png?raw=true)
 
 ### Getting Started
 Installing Composer Dependencies For Existing Applications
