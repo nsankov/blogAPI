@@ -1,7 +1,7 @@
 <p align="center"><a href="http://localhost" target="_blank"><img src="https://github.com/nsankov/laravel-blog-RESTful/blob/main/_documentation/logo.png?raw=true" width="150" alt="BlogAPI Logo"></a></p>
 
 <p align="center">
-![](https://github.com/nsankov/elara/workflows/Elara/badge.svg)
+    <img src="https://github.com/nsankov/laravel-blog-RESTful/workflows/laravel.yml/badge.svg" alt="Status building">
 
 [comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>)
 
