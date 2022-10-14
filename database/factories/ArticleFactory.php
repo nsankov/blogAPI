@@ -18,7 +18,8 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => fake()->text(30),
-            'body' => fake()->text(300),
+            'description' => fake()->text(50),
+            'content' => fake()->text(300),
             'created_at' => fake()->dateTimeBetween('-20 days', '-10 days'),
         ];
     }

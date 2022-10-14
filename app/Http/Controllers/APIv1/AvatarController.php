@@ -26,7 +26,7 @@ class AvatarController extends ApiController
 
     public function store(AvatarUploadRequest $request)
     {
-        $avatar = $this->avatarService->uploadToCloud($request->validated()['avatar']);
+        $avatar = $this->avatarService->uploadToCloud($request->validated()['avatar'], auth()->id());
         return new AvatarResource($avatar);
     }
 

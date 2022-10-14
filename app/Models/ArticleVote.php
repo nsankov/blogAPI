@@ -24,7 +24,7 @@ class ArticleVote extends Model
     /**
      * @var array
      */
-    protected $fillable = ['article_id', 'value'];
+    protected $fillable = ['article_id', 'user_id', 'value'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
