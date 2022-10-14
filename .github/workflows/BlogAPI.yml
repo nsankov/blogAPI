@@ -10,6 +10,8 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read-all|write-all
     env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
