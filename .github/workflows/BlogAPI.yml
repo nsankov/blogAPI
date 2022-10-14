@@ -16,10 +16,10 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v3
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Start Docker
       run: docker-compose up -d
-    - name: Copy .env
-      run: docker-compose run laravel.test php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
       run: docker-compose run laravel.test composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs 
     - name: Generate key
