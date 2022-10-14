@@ -21,8 +21,10 @@ class CommentVote extends Model
     /**
      * @var array
      */
-    protected $fillable = ['comment_id', 'value'];
+    protected $fillable = ['comment_id', 'user_id', 'value'];
 
+    const VOTE_UP = 1;
+    const VOTE_DOWN = -1;
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

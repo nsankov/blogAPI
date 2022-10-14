@@ -13,10 +13,10 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->index('posts_users_id_fk');
-            $table->unsignedBigInteger('category_id')->index('posts_categories_id_fk');
+            $table->unsignedBigInteger('user_id')->index('articles_users_id_fk');
+            $table->unsignedBigInteger('category_id')->index('articles_categories_id_fk');
             $table->string('title');
             $table->text('body');
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('articles');
     }
 }

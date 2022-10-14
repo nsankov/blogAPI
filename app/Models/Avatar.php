@@ -19,7 +19,7 @@ class Avatar extends Model
     /**
      * @var array
      */
-    protected $fillable = ['filename'];
+    protected $fillable = ['filename', 'user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
