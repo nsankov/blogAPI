@@ -1,5 +1,5 @@
 name: BlogAPI
-
+permissions: read-all|write-all
 on:
   push:
     branches: [ "*" ]
@@ -8,10 +8,7 @@ on:
 
 jobs:
   laravel-tests:
-
     runs-on: ubuntu-latest
-    permissions:
-      contents: read-all|write-all
     env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
