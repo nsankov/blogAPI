@@ -24,5 +24,7 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Start Docker
       run: docker-compose up -d
+    - name: magrate
+      run: docker-compose run laravel.test php artisan migrate
     - name: Run tests
       run: docker-compose run laravel.test vendor/bin/phpunit
