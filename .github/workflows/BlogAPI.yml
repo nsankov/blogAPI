@@ -4,12 +4,13 @@ on:
   push:
     branches: [ "*" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
 
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read-all|write-all
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -18,7 +19,7 @@ jobs:
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs 
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Start Docker
@@ -27,9 +28,28 @@ jobs:
       run: |
         touch database/database.sqlite
         chmod -R 777 database
+        mkdir build
+        chmod -R 777 build
     - name: Run tests
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: docker-compose run laravel.test vendor/bin/phpunit
-
+      run: docker-compose run laravel.test vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+    - name: 'Upload coverage results to Coveralls'
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COVERALLS_FLAG_NAME: php-laravel-blogAPI
+      run: |
+        ./vendor/bin/php-coveralls \
+          --coverage_clover=build/logs/clover.xml \
+          -v
+  coverage:
+    needs: laravel-tests
+    runs-on: ubuntu-latest
+    name: "Code coverage"
+    steps:
+      - name: 'Coveralls Finished'
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
