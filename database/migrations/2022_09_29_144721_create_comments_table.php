@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('article_id')->index('comments_articles_id_fk');
             $table->string('content');
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->integer('number')->nullable();
+            $table->integer('number');
             $table->string('path')->comment('001.001.003.008');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
