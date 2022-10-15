@@ -9,8 +9,6 @@ on:
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read-all|write-all
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
