@@ -8,27 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property integer $id
  * @property integer $user_id
- * @property integer $post_id
+ * @property integer $article_id
  * @property boolean $value
  * @property string $created_at
  * @property string $updated_at
- * @property Post $post
+ * @property Article $article
  * @property User $user
  */
-class PostVote extends Model
+class ArticleVote extends Model
 {
+    const VOTE_UP = 1;
+    const VOTE_DOWN = -1;
+
     use HasFactory;
     /**
      * @var array
      */
-    protected $fillable = ['post_id', 'value'];
+    protected $fillable = ['article_id', 'user_id', 'value'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function post()
+    public function article()
     {
-        return $this->belongsTo('App\Models\Post');
+        return $this->belongsTo('App\Models\Article');
     }
 
     /**

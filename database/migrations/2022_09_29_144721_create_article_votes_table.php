@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostVotesTable extends Migration
+class CreateArticleVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePostVotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_votes', function (Blueprint $table) {
+        Schema::create('article_votes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->index('post_votes_users_id_fk');
-            $table->unsignedBigInteger('post_id')->index('post_votes_posts_id_fk');
+            $table->unsignedBigInteger('user_id')->index('article_votes_users_id_fk');
+            $table->unsignedBigInteger('article_id')->index('article_votes_articles_id_fk');
             $table->tinyInteger('value');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreatePostVotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_votes');
+        Schema::dropIfExists('article_votes');
     }
 }

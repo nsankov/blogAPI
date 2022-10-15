@@ -17,6 +17,7 @@ class CreateAvatarsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable()->index('avatars_users_id_fk');
             $table->string('filename');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

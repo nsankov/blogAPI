@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @property integer $id
@@ -19,8 +20,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $updated_at
  * @property Avatar $avatar
  * @property CommentVote[] $commentVotes
- * @property PostVote[] $postVotes
- * @property Post[] $posts
+ * @property ArticleVote[] $articleVotes
+ * @property Article[] $articles
  */
 class User extends Authenticatable
 {
@@ -56,6 +57,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'user_id');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -75,16 +81,13 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function postVotes()
+    public function articleVotes()
     {
-        return $this->hasMany('App\Models\PostVote');
+        return $this->hasMany('App\Models\ArticleVote');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function posts()
+    public function setPasswordAttribute($value): void
     {
-        return $this->hasMany('App\Models\Post');
+        $this->attributes['password'] = Hash::make($value);
     }
 }

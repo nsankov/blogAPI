@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 //use App\Models\Avatar;
-//use App\Models\User;
+use App\Services\AvatarService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +22,8 @@ class AvatarFactory extends Factory
     {
         $tempName = tempnam(sys_get_temp_dir(), 'response').'.jpg';
         Http::sink($tempName)->retry(3, 100)->get("https://loremflickr.com/640/480/abstract");
-        $filename = Storage::putFile('/public/avatars', $tempName);
+
+        $filename = Storage::disk('minio')->putFile(AvatarService::MINIO_ORIGINAL_PATH, $tempName);
         return [
 //            'user_id' => User::orderByRaw('RAND()')->whereNotIn('id', Avatar::all('id'))->first()->id,
             'filename' => $filename

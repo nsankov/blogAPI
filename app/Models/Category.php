@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer $id
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property string $created_at
  * @property string $updated_at
- * @property Post[] $posts
+ * @property Article[] $articles
  */
 class Category extends Model
 {
@@ -21,11 +22,9 @@ class Category extends Model
      */
     protected $fillable = ['title', 'description'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function posts()
+
+    public function articles() :HasMany
     {
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Article::class);
     }
 }
