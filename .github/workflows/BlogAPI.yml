@@ -26,7 +26,7 @@ jobs:
     - name: Create Database
       run: |
         touch database/database.sqlite
-        chmod 777 database/database.sqlite
+        chmod -R 777 database
     - name: Run tests
       env:
         DB_CONNECTION: sqlite
