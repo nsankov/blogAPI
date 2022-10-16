@@ -5,28 +5,22 @@ namespace App\Services;
 use App\Models\Avatar;
 use App\Models\User;
 use \Illuminate\Http\Request;
-use App\Events\CreateAvatar;
-use App\Events\DeleteAvatar;
-use App\Events\UpdateAvatar;
-use Illuminate\Support\Facades\Storage;
-use App\Jobs\ProcessImageResize;
+use App\Events\UploadAvatar;
+
+use App\Infrastructure\Filesystem\AvatarStorage;
 
 class AvatarService
 {
 
-    const MINIO_ORIGINAL_PATH = 'avatar/original';
-
-    // protected $sizes = ['small' => ['width' => 20, 'height' =>20], 'medium' => ['width' => 50, 'height' =>50], 'large' => ['width' => 120, 'height' =>120]];
-
-    public function __construct(private Avatar $avatar)
+    public function __construct(public Avatar $avatar, public AvatarStorage $storage)
     {
       $this->sizes = config('avatar.sizes');
-      // code...
     }
+
     public function uploadToCloud($file, $userId){
-      $filename = Storage::disk('minio')->put(self::MINIO_ORIGINAL_PATH, $file);
+      $filename = $this->storage->upload($file);
       $avatar = $this->avatar->create(['filename' => $filename, 'user_id' => $userId]);
-      ProcessImageResize::dispatch($avatar, $this->sizes);
+      event(new UploadAvatar($avatar));
       return $avatar;
     }
 
@@ -41,12 +35,10 @@ class AvatarService
     }
 
     public function delete(Avatar $avatar){
-
       foreach ($this->sizes as $sizeName => $param){
-          Storage::disk('minio')->delete(str_ireplace('original', $sizeName, $avatar->filename));
+          $this->storage->delete(str_ireplace('original', $sizeName, $avatar->filename));
         }
-      Storage::disk('minio')->delete($avatar->filename);
+      $this->storage->delete($avatar->filename);
       $avatar->delete();
-
     }
 }
