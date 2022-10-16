@@ -9,30 +9,31 @@ use App\Http\Resources\APIv1\CommentCollection;
 use App\Http\Resources\APIv1\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Services\CommentService;
 
 class CommentController extends ApiController
 {
+  public function __construct(private CommentService $service){
+
+  }
     public function index(Request $request, $articleId)
     {
-        $comments = Comment::get()->where('article_id', $articleId);
-        return new CommentCollection($comments);
+        return new CommentCollection($this->service->list($articleId));
     }
 
     public function store(CommentStoreRequest $request, $articleId)
     {
-        $comment = Comment::createComment($request->validated());
+        $comment = $this->service->save($request->validated());
         return (new CommentResource($comment))->response()->setStatusCode(201);
     }
 
     public function show(Request $request, $articleId, $commentId) {
-        $comment = Comment::find($commentId);
-        return new CommentResource($comment);
+        return new CommentResource($this->service->get($commentId));
     }
 
     public function destroy(Request $request, $articleId, $commentId)
     {
-        $comment = Comment::find($commentId);
-        $comment->delete();
+        $this->service->delete($commentId);
         return response()->noContent();
     }
 }
