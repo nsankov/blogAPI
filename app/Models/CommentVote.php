@@ -30,7 +30,7 @@ class CommentVote extends Model
      */
     public function comment()
     {
-        return $this->belongsTo('App\Models\Comment');
+        return $this->hasOne('App\Models\Comment');
     }
 
     /**
@@ -38,6 +38,6 @@ class CommentVote extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->hasOne('App\Models\User');
     }
 }

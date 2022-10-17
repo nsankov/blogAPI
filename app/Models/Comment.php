@@ -33,24 +33,24 @@ class Comment extends Model
     const PATH_SEPARATOR = '.' ;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
     public function parent()
     {
-        return $this->belongsTo('App\Models\Comment', 'parent_id');
+        return $this->hasMany('App\Models\Comment', 'parent_id');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->hasOne('App\Models\User', 'user_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
      */
     public function article()
     {
-        return $this->belongsTo('App\Models\Article');
+        return $this->hasOne('App\Models\Article');
     }
 
     /**
