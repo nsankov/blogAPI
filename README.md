@@ -1,13 +1,7 @@
-<p align="center"><a href="http://localhost" target="_blank"><img src="https://github.com/nsankov/laravel-blog-RESTful/blob/main/_documentation/logo.png?raw=true" width="150" alt="BlogAPI Logo"></a></p>
+<p align="center"><a href="http://localhost" target="_blank"><img src="https://github.com/nsankov/blogAPI/blob/main/_documentation/logo.png?raw=true" width="150" alt="BlogAPI Logo"></a></p>
 
 <p align="center">
-    <a href="https://github.com/nsankov/laravel-blog-RESTful/actions"><img src="https://github.com/nsankov/laravel-blog-RESTful/actions/workflows/BlogAPI.yml/badge.svg" alt="Status building"></a>
-
-[comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>)
-
-[comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>)
-
-[comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>)
+    <a href="https://github.com/nsankov/blogAPI/actions"><img src="https://github.com/nsankov/blogAPI/actions/workflows/BlogAPI.yml/badge.svg" alt="Status building"></a>
 </p>
 
 ## About BlogAPI
