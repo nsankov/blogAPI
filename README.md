@@ -2,6 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/nsankov/blogAPI/actions"><img src="https://github.com/nsankov/blogAPI/actions/workflows/BlogAPI.yml/badge.svg" alt="Status building"></a>
+    [![GitHub Super-Linter](https://github.com/nsankov/blogAPI/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 </p>
 
 ## About BlogAPI
